@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
         .topnav{
             display: flex;
             /* align-content: center;
@@ -63,8 +67,11 @@
             width: 100%;
             border-radius: 4px;
             max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s;
+            height: 250px;
+            overflow: scroll;
+            scrollbar-color: red orange;
+            scrollbar-width: thin; 
+             transition: max-height 0.5s;
         }
 
         #select ul li{
@@ -90,6 +97,8 @@
             outline: none;
             margin-left: -33px;
             padding: 10px 20px;
+            border-radius: 4px;
+
         }
 
         .search-button img {
@@ -106,6 +115,21 @@
         }
         .lang img{
             height: 20px;
+        }
+
+        .botnav{
+            display: flex;
+            justify-content: space-between;
+            /* margin-top: 10px; */
+            background-color: #232F3E;
+            color: #fff;
+            align-items: center;
+        }
+        .fitbit img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -137,7 +161,7 @@
                         </ul>
                     </div>
                     <input type="text" id="textbox" placeholder="Search in All Categories">
-                    <button type="submit" class="search-button">
+                    <button type="submit" class="search-button" onclick="btnclick()">
                         <img src="https://www.kindacode.com/wp-content/uploads/2020/12/search.png">
                     </button>
                 </div>
@@ -151,7 +175,21 @@
             </div>
 
             <div class="botnav">
-                
+                <div class="all">All</div>
+                <div class="minitv">Amazon miniTV</div>
+                <div class="sell">Sell</div>
+                <div class="bs">Best Sellers</div>
+                <div class="mob">Mobiles</div>
+                <div class="deal">Today's Deals</div>
+                <div class="summersale"><img src="https://m.media-amazon.com/images/G/31/Events/img23/MayART23/SWM_400x39_LiveNow._CB590561779_.jpg"></div>
+            </div>
+
+            <div class="botbot" style="border-bottom: 1px solid #777; display: flex;">
+                <p id="searchresults" style="color: #FF9900;"></p>
+            </div>
+
+            <div class="fitbit">
+                <div class
             </div>
         </div>
     </div>
@@ -184,6 +222,13 @@
         }
         select.onclick = function(){
             list.classList.toggle("open");
+        }
+        function text(){
+            //  = textbox.textContent
+        }
+        function btnclick(){
+            let srchres = document.getElementById("textbox").value;
+            let srch = document.getElementById("searchresults").innerHTML = "Showing results for " + srchres + " in category " + seltext.innerHTML;
         }
     </script>
 </body>
