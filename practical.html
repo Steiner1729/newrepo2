@@ -5,8 +5,186 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .topnav{
+            display: flex;
+            /* align-content: center;
+            justify-content: space-between; */
+            padding: 2px;
+            background: #232F3E;
+        }
+        .logo img{
+            width: 120px;
+            height: auto;
+            padding-right: 10px;
+            padding-left: 30px;
+        }
+
+        .hello{
+            padding-left: 2px;
+            padding-right: 4px;
+            color: #fff;
+        }
+
+        .searchbar{
+            background: #fff;
+            width: 90%;
+            max-width: 800px;
+            height: 40px;
+            display: flex;
+            padding: 2px;
+            border-radius: 4px;
+        }
+
+        #select{
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #000;
+            width: 300px;
+            /* padding: 25px 20px; */
+            cursor: pointer;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        #select img{
+            width: 15px;
+        }
+
+        #select ul{
+            position: absolute;
+            top: 100%;
+            left: 0; 
+            list-style: none;
+            background: #ddd;
+            color: #000;
+            width: 100%;
+            border-radius: 4px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s;
+        }
+
+        #select ul li{
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .searchbar input{
+            padding: 10px 25px;
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 18px;
+        }
+
+        #select ul.open{
+            max-height: 300px;
+        }
+
+        .search-button {
+            background: #FF9900;
+            border: none;
+            outline: none;
+            margin-left: -33px;
+            padding: 10px 20px;
+        }
+
+        .search-button img {
+            width: 22.4px;
+            height: 20px;
+            object-fit: cover;
+        }
+
+        .lang{
+            display: flex;
+            color: #fff;
+            padding-top: 10px;
+            padding-left: 20px;
+        }
+        .lang img{
+            height: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="navbar">
+            <div class="topnav">
+                <div class="logo"><img src="https://zeevector.com/wp-content/uploads/LOGO/Amazon-India-Logo-PNG-White2.png"></div>
+                <div class="hello">Hello<br><b>Select your address</b></div>
+                <div class="searchbar">
+                    <div id="select">
+                        <p id="seltext">All</p>
+                        <img src="https://cdn-icons-png.flaticon.com/512/60/60995.png">
+                        <ul id="list">
+                            <li class="options">All</li>
+                            <li class="options">Alexa Services</li>
+                            <li class="options">Books</li>
+                            <li class="options">Computer And Accessories</li>
+                            <li class="options">Electronics</li>
+                            <li class="options">Fashion</li>
+                            <li class="options">Garden And Outdoors</li>
+                            <li class="options">Groceries</li>
+                            <li class="options">Home</li>
+                            <li class="options">Industrial And Scientific Equipment</li>
+                            <li class="options">Kids</li>
+                            <li class="options">Kitchen</li>
+                            <li class="options">Sports</li>
+                            <li class="options">Watches</li>
+                        </ul>
+                    </div>
+                    <input type="text" id="textbox" placeholder="Search in All Categories">
+                    <button type="submit" class="search-button">
+                        <img src="https://www.kindacode.com/wp-content/uploads/2020/12/search.png">
+                    </button>
+                </div>
+                <div class="lang">
+                    <img src="https://cdn.britannica.com/97/1597-004-05816F4E/Flag-India.jpg">
+                    EN
+                </div>
+
+                <div class="hello2" style="color: #fff; padding-left: 20px;">Hello, sign in<br>Account & Lists</div>
+                <div class="ret" style="color: #fff; padding-left: 20px;">Returns<br> & Orders</div>
+            </div>
+
+            <div class="botnav">
+                
+            </div>
+        </div>
+    </div>
+
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script>
+        let select = document.getElementById("select");
+        let list = document.getElementById("list");
+        let seltext = document.getElementById("seltext");
+        let options = document.getElementsByClassName("options");
+        let textbox = document.getElementById("textbox");
+        for(option of options){
+            option.onclick = function(){
+                seltext.innerHTML = this.innerHTML;
+                textbox.placeholder = "Search In " + seltext.innerHTML;
+            }
+        }
+        select.onclick = function(){
+            list.classList.toggle("open");
+        }
+    </script>
 </body>
 </html>
