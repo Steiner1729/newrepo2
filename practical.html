@@ -10,6 +10,8 @@
             margin: 0;
             padding: 0;
         }
+        @import url('https://fonts.cdn.com/css/amazon-ember');
+
         .topnav{
             display: flex;
             /* align-content: center;
@@ -28,6 +30,7 @@
             padding-left: 2px;
             padding-right: 4px;
             color: #fff;
+            font-family: 'Amazon Ember', sans-serif;
         }
 
         .searchbar{
@@ -38,6 +41,7 @@
             display: flex;
             padding: 2px;
             border-radius: 4px;
+            font-family: 'Amazon Ember', sans-serif;
         }
 
         #select{
@@ -51,6 +55,7 @@
             cursor: pointer;
             position: relative;
             border-radius: 4px;
+            font-family: 'Amazon Ember', sans-serif;
         }
 
         #select img{
@@ -71,12 +76,13 @@
             overflow: scroll;
             scrollbar-color: red orange;
             scrollbar-width: thin; 
-             transition: max-height 0.5s;
+            transition: max-height 0.5s;
         }
 
         #select ul li{
             padding: 10px 20px;
             cursor: pointer;
+            font-family: 'Amazon Ember', sans-serif;
         }
 
         .searchbar input{
@@ -124,13 +130,133 @@
             background-color: #232F3E;
             color: #fff;
             align-items: center;
+            font-family: 'Amazon Ember', sans-serif;
         }
-        .fitbit img{
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
-        }
+        .stars {
+		display:inline-block;
+		width:auto;
+		position:relative;
+		font-size:28px;
+		border:2px outset #FC0;
+		border-radius:5px;;
+		background-color:navy;
+    	margin:5px;
+        align-items: center;
+	}
+
+	.stars:BEFORE {
+		content:"★★★★★";
+		position:absolute;
+		overflow:hidden;
+		z-index:1;
+		left:0px;
+		top:0px;
+        color:#FC0;
+    }
+
+	.stars:AFTER {
+		content:"★★★★★";
+		position:relative;
+		color:#fff;
+	}
+
+	.stars.rate:AFTER {
+		position:absolute;
+		left:0px;
+	}
+
+	.stars.rate > A {
+		color:transparent;
+		text-decoration:none;
+		position:relative;
+		z-index:2;
+	}
+
+	.stars.rate:HOVER:BEFORE,
+	.stars.rate:HOVER:AFTER {
+		display:none;
+	}
+
+	.stars.rate:HOVER > A {
+		color:#FC0;
+		text-shadow:0px 1px 0 #000, 0 -1px 0 #fff;
+	}
+
+    .stars.rate:HOVER > A:HOVER {
+		color:#FC0;
+		text-shadow:0px 2px 0 #000, 0 -1px 0 #fff;
+		top:-1px;
+	}
+
+	.stars.rate >A:HOVER ~ A {
+		color:#fff;
+		text-shadow:none;
+	}
+
+	.stars:NOT([data-percent]):BEFORE,
+    .stars[data-percent="0"]:BEFORE {
+		display:none;
+	}
+
+	.stars[data-percent="10"]:BEFORE {
+		width:10%;
+	}
+
+	.stars[data-percent="20"]:BEFORE {
+		width:20%;
+	}
+
+	.stars[data-percent="30"]:BEFORE {
+		width:30%;
+	}
+	.stars[data-percent="40"]:BEFORE {
+		width:40%;
+	}
+	.stars[data-percent="50"]:BEFORE {
+		width:50%;
+	}
+	.stars[data-percent="60"]:BEFORE {
+		width:60%;
+	}
+	.stars[data-percent="70"]:BEFORE {
+		width:70%;
+	}
+	.stars[data-percent="80"]:BEFORE {
+		width:80%;
+	}
+	.stars[data-percent="90"]:BEFORE {
+		width:90%;
+	}
+	.stars[data-percent="100"]:BEFORE {
+		width:100%;
+	}
+
+    .products{
+        margin-top: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .product1{
+        border: 1px solid lightgray;
+    }
+
+    .product2{
+        border: 1px solid lightgray;
+    }
+
+    .product3{
+        border:1px solid lightgray;
+    }
+
+    .product4{
+        border: 1px solid lightgray;
+    }
+
+    .products img{
+        height: 350px;
+
+    }
     </style>
 </head>
 <body>
@@ -170,26 +296,106 @@
                     EN
                 </div>
 
-                <div class="hello2" style="color: #fff; padding-left: 20px;">Hello, sign in<br>Account & Lists</div>
-                <div class="ret" style="color: #fff; padding-left: 20px;">Returns<br> & Orders</div>
+                <div class="hello2" style="color: #fff; padding-left: 20px;font-family: 'Amazon Ember', sans-serif;">Hello, sign in<br>Account & Lists</div>
+                <div class="ret" style="color: #fff; padding-left: 20px;font-family: 'Amazon Ember', sans-serif;">Returns<br> & Orders</div>
             </div>
 
             <div class="botnav">
-                <div class="all">All</div>
+                <div class="all">   All</div>
                 <div class="minitv">Amazon miniTV</div>
-                <div class="sell">Sell</div>
-                <div class="bs">Best Sellers</div>
-                <div class="mob">Mobiles</div>
-                <div class="deal">Today's Deals</div>
+                <div class="sell">  Sell</div>
+                <div class="bs">    Best Sellers</div>
+                <div class="mob">   Mobiles</div>
+                <div class="deal">  Today's Deals</div>
                 <div class="summersale"><img src="https://m.media-amazon.com/images/G/31/Events/img23/MayART23/SWM_400x39_LiveNow._CB590561779_.jpg"></div>
             </div>
 
             <div class="botbot" style="border-bottom: 1px solid #777; display: flex;">
                 <p id="searchresults" style="color: #FF9900;"></p>
             </div>
-
-            <div class="fitbit">
-                <div class
+            <div class="products">
+                <div class="product1" style="position:relative;display: inline-block;font-size: 20px;">
+                    <a href="D:\Codes\newrepo2\feedbackform.html"></a><img src="https://m.media-amazon.com/images/I/61ybeKQto8L._AC_UL600_FMwebp_QL65_.jpg"></a>
+                    <span class="caption1" style="font-weight: bold;font-family: 'Amazon Ember', sans-serif;display: block;text-align: center;">
+                        Casio
+                    </span>
+                    <div class="bestseller" style="position: absolute;top: 8px;left: 16px;background: #f90;color: #fff;">
+                        Best seller
+                    </div>
+                    <span class="info1" style="font-family: 'Amazon Ember', sans-serif;display: block;text-align: center;">
+                        Vintage Series Digital Grey Dial<br> Men's Watch-A-158WA-1Q
+                    </span>
+                    <div class="stars rate" data-percent="80" style="position: absolute;left: 47px;">
+                        <a href="?1" title="awful"   ">★</a>
+                        <a href="?2" title="ok"      ">★</a>
+                        <a href="?3" title="good"    ">★</a>
+                        <a href="?4" title="great"   ">★</a>
+                        <a href="?5" title="awesome" ">★</a>
+                        </div>
+                    <div class="pricing1" style="font-family: 'Amazon Ember', sans-serif;">
+                        <br><br><span style="font-size: 35px;font-weight: bold;">₹1,441 </span> M.R.P: <span style="text-decoration: line-through;">₹1,695</span> (15%<br><span style="text-align: center;">off)</span>
+                    </div>
+                </div>
+                <div class="product2" style="position: relative;;vertical-align: top;display: inline-block;font-size: 20px;">
+                    <a href="D:\Codes\newrepo2\feedbackform.html"><img src="https://m.media-amazon.com/images/I/81nj6IlZpVL._AC_UL600_FMwebp_QL65_.jpg" alt=""></a>
+                    <span class="caption2" style="font-weight: bold;font-family: 'Amazon Ember', sans-serif;display: block;text-align: center;">
+                        TIMEWEAR
+                    </span>
+                    <span class="info2" style="font-family: 'Amazon Ember', sans-serif;display: block;text-align: center;">
+                        Analog Day Date Functioning<br> Stainless Steel Chain Watch f...
+                    </span>
+                    <div class="stars rate" data-percent="30" style="position: absolute;left: 47px;">
+                        <a href="?1" title="awful"   ">★</a>
+                        <a href="?2" title="ok"      ">★</a>
+                        <a href="?3" title="good"    ">★</a>
+                        <a href="?4" title="great"   ">★</a>
+                        <a href="?5" title="awesome" ">★</a>
+                        </div>
+                        <div class="pricing2" style="font-family: 'Amazon Ember', sans-serif;">
+                            <br><br><span style="font-size: 35px;font-weight: bold;">₹299 </span> M.R.P: <span style="font-size: 15px;text-decoration: line-through;font-weight: lighter;">₹1,799</span> (83%<br><span style="text-align: center;">off)</span>
+                        </div>
+                </div>
+                <div class="product3" style="position: relative;;vertical-align: top;display: inline-block;font-size: 20px;">
+                    <a href="D:\Codes\newrepo2\feedbackform.html"><img src="https://m.media-amazon.com/images/I/71Kx6rgmlRS._AC_UL600_FMwebp_QL65_.jpg" alt=""></a>
+                    <span class="caption2" style="font-weight: bold;font-family: 'Amazon Ember', sans-serif;display: block;text-align: center;">
+                        TIMEX
+                    </span>
+                    <div class="amaz" style="position: absolute;top:8px;;background: #232F3E;color: #fff;">
+                        Amazon's <span style="color: #f90;">choice</span>
+                    </div>
+                    <span class="info3" style="font-family: 'Amazon Ember', sans-serif;display: block;text-align: center;">
+                        Analog Men's Watch (Dial<br> Colored Strap)
+                    </span>
+                    <div class="stars rate" data-percent="60" style="position: absolute;left: 47px;">
+                        <a href="?1" title="awful"   ">★</a>
+                        <a href="?2" title="ok"      ">★</a>
+                        <a href="?3" title="good"    ">★</a>
+                        <a href="?4" title="great"   ">★</a>
+                        <a href="?5" title="awesome" ">★</a>
+                        </div><br>
+                        <div class="pricing3" style="font-family: 'Amazon Ember', sans-serif;">
+                            <br><br><span style="font-size: 35px;font-weight: bold;">₹999 </span> M.R.P: <span style="font-size: 15px;text-decoration: line-through;font-weight:1px;">₹1,595</span> (37%<br><span style="text-align: center;">off)</span>
+                        </div>
+                </div>
+                <div class="product4" style="position: relative;;vertical-align: top;display: inline-block;font-size: 20px;">
+                    <a href="D:\Codes\newrepo2\feedbackform.html"><img src="https://m.media-amazon.com/images/I/61oaCgbtgzL._AC_UL600_FMwebp_QL65_.jpg" alt=""></a>
+                    <span class="caption2" style="font-weight: bold;font-family: 'Amazon Ember', sans-serif;display: block;text-align: center;">
+                        TIMEWEAR
+                    </span>
+                    <span class="info2" style="font-family: 'Amazon Ember', sans-serif;display: block;text-align: center;">
+                        Vintage Series Digital Grey Dial <br>Men's Watch-DBC-32D-1ADF
+                    </span>
+                    <div class="stars rate" data-percent="50" style="position: absolute;left: 47px;">
+                        <a href="?1" title="awful"   ">★</a>
+                        <a href="?2" title="ok"      ">★</a>
+                        <a href="?3" title="good"    ">★</a>
+                        <a href="?4" title="great"   ">★</a>
+                        <a href="?5" title="awesome" ">★</a>
+                        </div>
+                        <div class="pricing2" style="font-family: 'Amazon Ember', sans-serif;">
+                            <br><br><span style="font-size: 35px;font-weight: bold;">₹2,476 </span> M.R.P: <span style="font-size: 15px;text-decoration: line-through;font-weight: lighter;">₹3,095</span> (20%<br><span style="text-align: center;">off)</span>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
