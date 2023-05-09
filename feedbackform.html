@@ -26,104 +26,59 @@
     width: 100%;
     border: 1px solid #ddd;
     }
-    .stars {
-		display:inline-block;
-		width:auto;
-		position:relative;
-		font-size:28px;
-		border:2px outset #FC0;
-		border-radius:5px;;
-		background-color:navy;
-    	margin:5px;
-        align-items: center;
-	}
-
-	.stars:BEFORE {
-		content:"★★★★★";
-		position:absolute;
-		overflow:hidden;
-		z-index:1;
-		left:0px;
-		top:0px;
-        color:#FC0;
-    }
-
-	.stars:AFTER {
-		content:"★★★★★";
-		position:relative;
-		color:#fff;
-	}
-
-	.stars.rate:AFTER {
-		position:absolute;
-		left:0px;
-	}
-
-	.stars.rate > A {
-		color:transparent;
-		text-decoration:none;
-		position:relative;
-		z-index:2;
-	}
-
-	.stars.rate:HOVER:BEFORE,
-	.stars.rate:HOVER:AFTER {
-		display:none;
-	}
-
-	.stars.rate:HOVER > A {
-		color:#FC0;
-		text-shadow:0px 1px 0 #000, 0 -1px 0 #fff;
-	}
-
-    .stars.rate:HOVER > A:HOVER {
-		color:#FC0;
-		text-shadow:0px 2px 0 #000, 0 -1px 0 #fff;
-		top:-1px;
-	}
-
-	.stars.rate >A:HOVER ~ A {
-		color:#fff;
-		text-shadow:none;
-	}
-
-	.stars:NOT([data-percent]):BEFORE,
-    .stars[data-percent="0"]:BEFORE {
-		display:none;
-	}
-
-	.stars[data-percent="10"]:BEFORE {
-		width:10%;
-	}
-
-	.stars[data-percent="20"]:BEFORE {
-		width:20%;
-	}
-
-	.stars[data-percent="30"]:BEFORE {
-		width:30%;
-	}
-	.stars[data-percent="40"]:BEFORE {
-		width:40%;
-	}
-	.stars[data-percent="50"]:BEFORE {
-		width:50%;
-	}
-	.stars[data-percent="60"]:BEFORE {
-		width:60%;
-	}
-	.stars[data-percent="70"]:BEFORE {
-		width:70%;
-	}
-	.stars[data-percent="80"]:BEFORE {
-		width:80%;
-	}
-	.stars[data-percent="90"]:BEFORE {
-		width:90%;
-	}
-	.stars[data-percent="100"]:BEFORE {
-		width:100%;
-	}
+    .star-rating {
+   margin: 25px 0 0px;
+  font-size: 0;
+  white-space: nowrap;
+  display: inline-block;
+  width: 175px;
+  height: 35px;
+  overflow: hidden;
+  position: relative;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+		
+.star-rating i {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 20%;
+  z-index: 1;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  opacity: 0;
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  position: relative;
+}
+		
+.star-rating input:hover + i,
+.star-rating input:checked + i {
+  opacity: 1;
+}
+.star-rating i ~ i {
+  width: 40%;
+}
+.star-rating i ~ i ~ i {
+  width: 60%;
+}
+.star-rating i ~ i ~ i ~ i {
+  width: 80%;
+}
+.star-rating i ~ i ~ i ~ i ~ i {
+  width: 100%;
+}
     .choice {
     position: fixed;
     top: 0;
@@ -224,13 +179,13 @@ span.scale-rating label:before
             <div class="clear"></div> 
             <hr class="survey-hr">
             <label>2. Quality of the product when you received it?</label><br>
-            <div class="stars rate" data-percent="30" style="position: absolute;left: 47px;">
-                <input type="radio" title="awful"   ">★</a>
-                <input type="radio" title="ok"      ">★</a>
-                <input type="radio" title="good"    ">★</a>
-                <input type="radio" title="great"   ">★</a>
-                <input type="radio" title="awesome" ">★</a>
-                </div>
+	    <span class="star-rating">
+		  <input type="radio" name="rating2" value="1"><i></i>
+		  <input type="radio" name="rating2" value="2"><i></i>
+		  <input type="radio" name="rating2" value="3"><i></i>
+		  <input type="radio" name="rating2" value="4"><i></i>
+		  <input type="radio" name="rating2" value="5"><i></i>
+	    </span>
             
             
             <div class="clear"></div> 
